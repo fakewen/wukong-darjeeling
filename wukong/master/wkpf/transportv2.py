@@ -19,6 +19,7 @@ from gevent import socket
 from tinyrpc.protocols.jsonrpc import JSONRPCProtocol
 from tinyrpc.transports import ClientTransport
 from tinyrpc import RPCClient
+from transport import NetworkServerAgent
 import mptnUtils
 import ipaddress
 from gevent.lock import RLock
@@ -1088,6 +1089,9 @@ def getAgent():
 
 def getZwaveAgent():
     return RPCAgent.init()
+
+def getNetworkServerAgent():
+    return NetworkServerAgent.init()
 
 def getDeferredQueue():
     return DeferredQueue.init()

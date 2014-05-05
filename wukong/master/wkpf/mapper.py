@@ -171,8 +171,7 @@ def firstCandidate(logger, changesets, routingTable, locTree):
           if inst.created:
             inst.wunode.port_list.remove(inst.port_number)
             WuObjectFactory.remove(inst.wunode, inst.port_number)
-          inst.mapped = False
-            
+          inst.mapped = False            
         print ("mapped node id",[inst.wunode.id for inst in component.instances])
 
     # Done looping components

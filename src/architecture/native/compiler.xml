@@ -2,6 +2,7 @@
 	<property name="ar" value="ar"/>
 	
 	<dirname property="compilerpath" file="${ant.file.compiler}"/>
+	<property name="ext-lib-dir" value="${compilerpath}/../../../lib"/>
 	
 	<import file="${compilerpath}/../../taskdefs.xml"/>
 
@@ -22,7 +23,7 @@
 					<compilerarg value="-Wall"/>
 					<compilerarg value="-Werror"/>
 					<compilerarg value="-std=gnu99"/>
-					<compilerarg value="-march=i586"/>
+					<compilerarg value="-I${ext-lib-dir}/libstrophe"/>
 					<compiler-args/>
 				</compiler>
 
@@ -39,7 +40,12 @@
 			<cc
 				name="gcc"
 				outfile="@{outputfile}"
-				>				
+				>
+				<linker>
+					<linkerarg value="-L${ext-lib-dir}/libstrophe"/>
+					<linkerarg value="-lstrophe"/>
+					<linkerarg value="-shared"/>
+				</linker>
 				<link-elements/>
 			</cc>
 		</sequential>

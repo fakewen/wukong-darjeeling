@@ -3,12 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <strophe.h>
 
 void wuclass_light_actuator_setup(wuobject_t *wuobject) {
 	if( access( "/sys/class/gpio/gpio26/value", F_OK ) == -1 ) {
 		system("echo -n 26 > /sys/class/gpio/export");
 	}
 	system("echo -n out > /sys/class/gpio/gpio26/direction");
+
+	xmpp_run(0);
 }
 
 void wuclass_light_actuator_update(wuobject_t *wuobject) {
